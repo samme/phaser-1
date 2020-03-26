@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Phaser 3</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
     <script src="phaser.min.js"></script>
     <style type="text/css">
@@ -27,63 +27,50 @@
 
         var GAME_WIDTH = 1920;
         var GAME_HEIGHT = 1080;
-
+        var loadingText;
         var GameScene = new Phaser.Class({
             Extends: Phaser.Scene,
             preload: function (){
                 this.load.image('sky', '13219.jpg');
+                // const width = this.cameras.main.width;
+                // const height = this.cameras.main.height;
+
+                // this.load.image('sky', '13219.jpg');
+                // loadingText = this.make.text({
+                //     x: width / 2,
+                //     y: height / 2 - 50,
+                //     text: 'Loading...',
+                //     style: {
+                //         font: '20px monospace',
+                //         fill: '#ffffff'
+                //     }
+                // });
+
+        
+                // loadingText.setOrigin(0.5, 0.5);
+                
             },
             create: function (){
-                this.add.image(0, 0, 'sky').setOrigin(0)
+                this.logo = this.add.image(0, 0, 'sky').setOrigin(0)
             }
 
         });
         
+        
         var config = {
             type: Phaser.AUTO,
             scale: {
-                mode: Phaser.Scale.FIT,
-                autoCenter: Phaser.Scale.CENTER_BOTH,
                 width: GAME_WIDTH,
                 height: GAME_HEIGHT,
-                parent: 'phaser-example'
             },
 
             parent:'phaser-example',
-            backgroundColor: '#0000FF',
             scene: GameScene
         };
 
 
-        var game = new Phaser.Game(config);
 
-
-        setTimeout(() => {
-            const scale = game.scene.scenes[0].scale;
-             if(scale.isLandscape) {
-                scale.displaySize.aspectRatio = GAME_WIDTH/GAME_HEIGHT;
-                scale.setGameSize(GAME_WIDTH, GAME_HEIGHT);
-            } else {
-                scale.displaySize.aspectRatio = GAME_HEIGHT/GAME_WIDTH;
-                scale.setGameSize(GAME_HEIGHT, GAME_WIDTH);
-            }
-
-            scale.on('orientationchange', (e) => {
-                console.log(e);
-                switch(e) {
-                    case 'portrait-primary':
-                        scale.displaySize.aspectRatio = GAME_HEIGHT/GAME_WIDTH;
-                        scale.setGameSize(GAME_HEIGHT,GAME_WIDTH);
-                        break;
-                    case 'landscape-primary':
-                        scale.displaySize.aspectRatio = GAME_WIDTH/GAME_HEIGHT;
-                        scale.setGameSize(GAME_WIDTH,GAME_HEIGHT);
-                        break;
-                    default:  
-                }
-            })
-            console.log(game.scene.scenes[0].scale);
-        }, 200);
+        var game = new Phaser.Game(config);        
 
     </script>
 </body>
