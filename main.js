@@ -4,6 +4,7 @@ var loadingText;
 var GameScene = new Phaser.Class({
   Extends: Phaser.Scene,
   preload: function() {
+    this.load.image('1920x1080');
     this.load.image('sky', '13219.jpg');
     // const width = this.cameras.main.width;
     // const height = this.cameras.main.height;
@@ -22,7 +23,11 @@ var GameScene = new Phaser.Class({
     // loadingText.setOrigin(0.5, 0.5);
   },
   create: function() {
-    this.logo = this.add.image(0, 0, 'sky').setOrigin(0);
+    // this.logo = this.add.image(0, 0, 'sky').setOrigin(0);
+    this.add.image(0, 0, '1920x1080').setOrigin(0, 0);
+
+    console.assert(this.game.canvas.width === 1920);
+    console.assert(this.game.canvas.height === 1080);
   }
 });
 
