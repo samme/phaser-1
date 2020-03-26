@@ -25,9 +25,6 @@ var GameScene = new Phaser.Class({
   create: function() {
     // this.logo = this.add.image(0, 0, 'sky').setOrigin(0);
     this.add.image(0, 0, '1920x1080').setOrigin(0, 0);
-
-    console.assert(this.game.canvas.width === 1920);
-    console.assert(this.game.canvas.height === 1080);
   }
 });
 
@@ -35,10 +32,12 @@ var config = {
   type: Phaser.AUTO,
   scale: {
     width: GAME_WIDTH,
-    height: GAME_HEIGHT
+    height: GAME_HEIGHT,
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    parent: 'phaser-example'
   },
 
-  parent: 'phaser-example',
   scene: GameScene
 };
 
