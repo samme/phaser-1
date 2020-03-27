@@ -23,12 +23,25 @@
             display: block;
             background-color: #000000;
         }
+
+        #debug {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60em;
+            height: 5em;
+            overflow: hidden;
+            margin: 0;
+            font: 1rem/1.5 monospace;
+            color: yellow;
+            background: rgba(0, 0, 0, 0.8);
+        }
     </style>
 </head>
 
 <body>
     <div id="phaser-example"></div>
-
+    <pre id=debug></pre>
     <script src="phaser.js"></script>
     <script src="main.js"></script>
 </body>

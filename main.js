@@ -1,6 +1,9 @@
 var GAME_WIDTH = 1920;
 var GAME_HEIGHT = 1080;
 var loadingText;
+
+var debug = document.getElementById('debug');
+
 var GameScene = new Phaser.Class({
   Extends: Phaser.Scene,
   preload: function() {
@@ -22,9 +25,18 @@ var GameScene = new Phaser.Class({
 
     // loadingText.setOrigin(0.5, 0.5);
   },
+
   create: function() {
     // this.logo = this.add.image(0, 0, 'sky').setOrigin(0);
     this.add.image(0, 0, '1920x1080').setOrigin(0, 0);
+  },
+
+  update: function() {
+    debug.innerText = [
+      'gameSize:    ' + this.scale.gameSize,
+      'parentSize:  ' + this.scale.parentSize,
+      'displaySize: ' + this.scale.displaySize
+    ].join('\n');
   }
 });
 
